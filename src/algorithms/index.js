@@ -4,14 +4,14 @@ export function* bubbleSort(array) {
     let sortedIndices = [];
 
     for (let i = 0; i < n - 1; i++) {
-        for(let j = 0; j < n - i - 1; j++) {
+        for (let j = 0; j < n - i - 1; j++) {
             yield { array: arr, activeIndices: [j, j + 1], swappedIndices: [], sortedIndices, eliminatedIndices: [] };
 
             if (arr[j] > arr[j + 1]) {
                 let temp = arr[j];
                 arr[j] = arr[j + 1];
                 arr[j + 1] = temp;
-                yield {array: arr, activeIndices: [], swappedIndices: [j, j + 1], sortedIndices, eliminatedIndices: [] };
+                yield { array: arr, activeIndices: [], swappedIndices: [j, j + 1], sortedIndices, eliminatedIndices: [] };
             }
         }
         sortedIndices.push(n - i - 1);

@@ -1,7 +1,7 @@
 import {
     bubbleSort,
     stalinSort
-} from "./index.js";
+} from "./index";
 
 export const algorithmsData = [
     {
