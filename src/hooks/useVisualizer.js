@@ -66,7 +66,11 @@ export function useVisualizer(algorithmGenerator, initialSize = 30) {
         setIsPlaying(true);
     }, [algorithmGenerator]);
 
-    const reset = useCallback(() => {
+    const pause = useCallback(() => {
+        setIsPlaying(false);
+    }, []);
+
+   const reset = useCallback(() => {
         generateArray(size);
     }, [generateArray, size]);
 
@@ -109,6 +113,7 @@ export function useVisualizer(algorithmGenerator, initialSize = 30) {
         speed,
         size,
         play,
+        pause,
         step,
         reset,
         setSpeed,
