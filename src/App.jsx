@@ -1,6 +1,7 @@
 import {useMemo, useState} from "react";
 import {useVisualizer} from "./hooks/useVisualizer.js";
 import {BarChart} from "./components/BarChart.jsx";
+import {ControlPanel} from "./components/ControlPanel.jsx";
 import {algorithmsData} from "./algorithms/data.js";
 
 function App() {
@@ -39,6 +40,21 @@ function App() {
               <p className="text-slate-500 text-base mt-1 font-medium">Algorithm Visualizer</p>
             </div>
           </header>
+
+          <ControlPanel
+              isPlaying={isPlaying}
+              play={play}
+              pause={pause}
+              reset={reset}
+              step={step}
+              speed={speed}
+              setSpeed={setSpeed}
+              size={size}
+              setSize={setSize}
+              algorithms={algorithmsData}
+              selectedAlgo={selectedAlgoId}
+              setSelectedAlgo={setSelectedAlgoId}
+          />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 h-180">
             <div className="lg:col-span-7 bg-white rounded-2xl p-4 border border-slate-200 shadow-sm flex flex-col">
