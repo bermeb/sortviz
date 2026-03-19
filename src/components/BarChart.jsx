@@ -15,7 +15,7 @@ export function BarChart({
   const eliminatedSet = new Set(eliminatedIndices);
 
   return (
-      <div className="flex items-end justify-center w-full h-full p-8 bg-slate-900 rounded-2xl overflow-hidden shadow-2xl border border-slate-800">
+      <div className="flex items-end justify-center w-full h-full p-8 bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200">
           {/* Container without gap to avoid sub-pixel layout issues */}
           <div className="flex items-end justify-center w-full h-full">
               {array.map((value, idx) => {
@@ -35,12 +35,12 @@ export function BarChart({
                               height: `${(value / maxVal) * 100}%`,
                               // TODO: Clean this up
                               backgroundColor: isActive
-                                  ? "#facc15"
+                                  ? "#fbbf24" // Amber
                                   : isSwapped
-                                      ? "#ef4444"
+                                      ? "#ef4444" // Red
                                       : isSorted
-                                          ? "#10b981"
-                                          : "#8b5cf6"
+                                          ? "#10b981" // Green
+                                          : "#4f46e5"  // Indigo
                           }}
                           transition={{
                               type: "tween",
