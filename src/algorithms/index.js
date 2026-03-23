@@ -41,5 +41,5 @@ export function* stalinSort(array) {
         }
         yield { array: arr, activeIndices: [], swappedIndices: [], sortedIndices: [...sortedIndices], eliminatedIndices: [...eliminatedIndices] };
     }
-    yield { array: arr, activeIndices: [], swappedIndices: [], sortedIndices, eliminatedIndices: [] };
+    yield { array: arr, activeIndices: [], swappedIndices: [], sortedIndices, eliminatedIndices: [...eliminatedIndices] };
 }
