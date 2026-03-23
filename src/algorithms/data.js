@@ -9,13 +9,36 @@ export const algorithmsData = [
         name: 'Bubble Sort',
         cursed: false,
         generator: bubbleSort,
-        description: 'A simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.'
+        description: 'A simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.',
+        timeComplexity: 'O(n²)',
+        spaceComplexity: 'O(1)',
+        jscode: `function bubbleSort(arr) {
+  for (let i = 0; i < n - 1; i++) {
+    for (let j = 0; j < n - i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        swap(arr[j], arr[j + 1]);
+      }
+    }
+  }
+}`
     },
     {
         id: 'stalin',
         name: 'Stalin Sort',
         cursed: true,
         generator: stalinSort,
-        description: 'Eliminates any element that is not strictly greater than or equal to the previous one. It is O(n) but you might lose some data along the way.'
+        description: 'Eliminates any element that is not strictly greater than or equal to the previous one. It is O(n) but you might lose some data along the way.',
+        timeComplexity: 'O(n)',
+        spaceComplexity: 'O(1)',
+        jscode: `function stalinSort(arr) {
+  let max = arr[0];
+  return arr.filter(val => {
+    if (val >= max) {
+      max = val;
+      return true;
+    }
+    return false; // Eliminated!
+  });
+}`
     }
 ]
