@@ -21,11 +21,12 @@ export function ControlPanel({
                     value={selectedAlgo}
                     onChange={(e) => setSelectedAlgo(e.target.value)}
                     disabled={isPlaying}
-                    className=""
+                    className="bg-slate-50 border border-slate-200 text-slate-900 text-base rounded-xl focus:ring-indigo-500 focus:border-indigo-500 block w-full p-3
+          min-w-55 cursor-pointer outline-none"
                 >
                     {algorithms.map((algo) => (
                         <option key={algo.id} value={algo.id}>
-                            {algo.name}
+                            {algo.name} {algo.cursed ? '💀' : ''}
                         </option>
                     ))}
                 </select>
@@ -34,7 +35,7 @@ export function ControlPanel({
             <div className="flex items-center gap-3">
                 <button
                     onClick={isPlaying ? pause : play}
-                    className="flex items-center justify-center w-12 h-12"
+                    className="flex items-center justify-center w-12 h-12 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl transition-all hover:scale-105 active:scale-95 shadow-lg shadow-indigo-500/20"
                     title={isPlaying ? "Pause" : "Play"}
                 >
                     {isPlaying ? <Pause size={24} /> : <Play size={24} />}
@@ -42,14 +43,14 @@ export function ControlPanel({
                 <button
                     onClick={step}
                     disabled={isPlaying}
-                    className="flex items-center justify-center w-12 h-12"
+                    className="flex items-center justify-center w-12 h-12 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl transition-all hover:scale-105 active:scale-95 disabled:opacity-50"
                     title="Step Forward"
                 >
                     <SkipForward size={24} />
                 </button>
                 <button
                     onClick={reset}
-                    className="flex items-center justify-center w-12 h-12 "
+                    className="flex items-center justify-center w-12 h-12 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl transition-all hover:scale-105 active:scale-95"
                     title="Reset Array"
                 >
                     <RotateCcw size={24} />
@@ -67,7 +68,7 @@ export function ControlPanel({
                         max="200"
                         value={speed}
                         onChange={(e) => setSpeed(Number(e.target.value))}
-                        className="w-full h-2"
+                        className="w-full h-2 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-indigo-600"
                     />
                 </div>
 
@@ -83,7 +84,7 @@ export function ControlPanel({
                             if (!isPlaying) reset();
                         }}
                         disabled={isPlaying}
-                        className="w-full h-2"
+                        className="w-full h-2 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-indigo-600 disabled:opacity-50"
                     />
                 </div>
             </div>
