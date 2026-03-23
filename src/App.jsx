@@ -2,6 +2,7 @@ import {useMemo, useState} from "react";
 import {useVisualizer} from "./hooks/useVisualizer.js";
 import {BarChart} from "./components/BarChart.jsx";
 import {ControlPanel} from "./components/ControlPanel.jsx";
+import {InfoPanel} from "./components/InfoPanel.jsx";
 import {algorithmsData} from "./algorithms/data.js";
 
 function App() {
@@ -65,6 +66,9 @@ function App() {
                   sortedIndices={sortedIndices}
                   eliminatedIndices={eliminatedIndices}
               />
+            </div>
+            <div className="lg:col-span-5 h-full">
+              <InfoPanel algorithm={selectedAlgorithm} />
             </div>
           </div>
         </div>
