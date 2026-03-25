@@ -60,8 +60,8 @@ function App() {
               setSelectedLanguage={setSelectedLanguage}
           />
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 h-180">
-            <div className="lg:col-span-7 bg-white rounded-2xl p-4 border border-slate-200 shadow-sm flex flex-col">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:h-180">
+            <div className="lg:col-span-7 bg-white rounded-2xl p-4 border border-slate-200 shadow-sm flex flex-col h-100 lg:h-full">
               <BarChart
                   array={array}
                   activeIndices={activeIndices}
@@ -70,7 +70,7 @@ function App() {
                   eliminatedIndices={eliminatedIndices}
               />
             </div>
-            <div className="lg:col-span-5 h-full">
+            <div className="lg:col-span-5 h-125 lg:h-full">
               <InfoPanel
                   algorithm={selectedAlgorithm}
                   language={selectedLanguage}

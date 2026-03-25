@@ -15,7 +15,7 @@ export function BarChart({
   const eliminatedSet = new Set(eliminatedIndices);
 
   return (
-      <div className="flex items-end justify-center w-full h-full p-8 bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200">
+      <div className="flex items-end justify-center w-full h-full p-2 sm:p-4 lg:p-8 bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200">
           {/* Container without gap to avoid sub-pixel layout issues */}
           <div className="flex items-end justify-center w-full h-full">
               {array.map((value, idx) => {
@@ -50,7 +50,7 @@ export function BarChart({
                           style={{
                               flex: "1 1 0px",
                               minWidth: 0,
-                              marginInline: "1px",
+                              marginInline: array.length > 60 ? "0.25px" : array.length > 30 ? "0.5px" : "1px",
                               // Force GPU layer to prevent ghosting/artifacts
                               transform: "translateZ(0)",
                               backfaceVisibility: "hidden",
