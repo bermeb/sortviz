@@ -14,8 +14,8 @@ export function InfoPanel({ algorithm, language = 'js' }) {
     if (!algorithm) return null;
 
     const codeToShow = typeof algorithm.code === 'string'
-        ? algorithm.jscode
-        : (algorithm.code[language] || algorithm.jscode || '');
+        ? algorithm.code
+        : (algorithm.code[language] || algorithm.code['js'] || '');
 
     const langMap = {
       js: 'javascript',
