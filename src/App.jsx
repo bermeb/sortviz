@@ -7,6 +7,7 @@ import {algorithmsData} from "./algorithms/data.js";
 
 function App() {
   const [selectedAlgoId, setSelectedAlgoId] = useState('bubble');
+  const [selectedLanguage, setSelectedLanguage] = useState('js');
 
   const selectedAlgorithm = useMemo(
       () => algorithmsData.find((a) => a.id === selectedAlgoId) || algorithmsData[0],
@@ -55,6 +56,8 @@ function App() {
               algorithms={algorithmsData}
               selectedAlgo={selectedAlgoId}
               setSelectedAlgo={setSelectedAlgoId}
+              selectedLanguage={selectedLanguage}
+              setSelectedLanguage={setSelectedLanguage}
           />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 h-180">
@@ -68,7 +71,10 @@ function App() {
               />
             </div>
             <div className="lg:col-span-5 h-full">
-              <InfoPanel algorithm={selectedAlgorithm} />
+              <InfoPanel
+                  algorithm={selectedAlgorithm}
+                  language={selectedLanguage}
+              />
             </div>
           </div>
         </div>

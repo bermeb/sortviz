@@ -12,7 +12,9 @@ export function ControlPanel({
     setSize,
     algorithms,
     selectedAlgo,
-    setSelectedAlgo
+    setSelectedAlgo,
+    selectedLanguage,
+    setSelectedLanguage
 }) {
     return (
         <div className="flex flex-wrap items-center justify-between gap-6 p-6 bg-white rounded-2xl border border-slate-200 shadow-sm">
@@ -29,6 +31,18 @@ export function ControlPanel({
                             {algo.name} {algo.cursed ? '💀' : ''}
                         </option>
                     ))}
+                </select>
+
+                <select
+                    value={selectedLanguage}
+                    onChange={(e) => setSelectedLanguage(e.target.value)}
+                    className="bg-slate-50 border border-slate-200 text-slate-900 text-base rounded-xl focus:ring-indigo-500 focus:border-indigo-500 block p-3
+                    cursor-pointer outline-none font-medium"
+                >
+                    <option value="js">JavaScript</option>
+                    <option value="python">Python</option>
+                    <option value="java">Java</option>
+                    <option value="cpp">C++</option>
                 </select>
             </div>
 

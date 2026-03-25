@@ -1,11 +1,30 @@
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
 import js from 'react-syntax-highlighter/dist/esm/languages/hljs/javascript';
+import python from 'react-syntax-highlighter/dist/esm/languages/hljs/python';
+import java from 'react-syntax-highlighter/dist/esm/languages/hljs/java';
+import cpp from 'react-syntax-highlighter/dist/esm/languages/hljs/cpp';
 import { atomOneLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 SyntaxHighlighter.registerLanguage('javascript', js);
+SyntaxHighlighter.registerLanguage('python', python);
+SyntaxHighlighter.registerLanguage('java', java);
+SyntaxHighlighter.registerLanguage('cpp', cpp);
 
-export function InfoPanel({ algorithm }) {
+export function InfoPanel({ algorithm, language = 'js' }) {
     if (!algorithm) return null;
+
+    const codeToShow = typeof algorithm.code === 'string'
+        ? algorithm.jscode
+        : (algorithm.code[language] || algorithm.jscode || '');
+
+    const langMap = {
+      js: 'javascript',
+      python: 'python',
+      java: 'java',
+      cpp: 'cpp'
+    };
+
+    const langDisplay = langMap[language] || 'javascript';
 
     return (
         <div className="flex flex-col gap-5 p-6 bg-white rounded-2xl border border-slate-200 shadow-sm h-full overflow-hidden">
@@ -35,10 +54,10 @@ export function InfoPanel({ algorithm }) {
             </div>
 
             <div className="grow flex flex-col min-h-0">
-                <h3 className="text-xs font-bold text-slate-400 mb-2 uppercase tracking-[0.2em]">JS-Implementation</h3>
+                <h3 className="text-xs font-bold text-slate-400 mb-2 uppercase tracking-[0.2em]">Implementation ({language.toUpperCase()})</h3>
                 <div className="rounded-xl overflow-auto border border-slate-200 shadow-inner grow bg-slate-50">
                     <SyntaxHighlighter
-                        language="javascript"
+                        language={langDisplay}
                         style={atomOneLight}
                         customStyle={{
                             margin: 0,
@@ -50,7 +69,7 @@ export function InfoPanel({ algorithm }) {
                         }}
                         wrapLines={true}
                     >
-                        {algorithm.jscode}
+                        {codeToShow}
                     </SyntaxHighlighter>
                 </div>
             </div>
