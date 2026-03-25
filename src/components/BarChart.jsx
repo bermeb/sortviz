@@ -23,6 +23,19 @@ export function BarChart({
                   const isActive = activeSet.has(idx);
                   const isSwapped = swappedSet.has(idx);
                   const isSorted = sortedSet.has(idx);
+                  const BAR_COLORS = {
+                      active:  "#fbbf24",
+                      swapped: "#ef4444",
+                      sorted:  "#10b981",
+                      default: "#4f46e5",
+                  };
+
+                  const getBarColor = () => {
+                      if (isActive)  return BAR_COLORS.active;
+                      if (isSwapped) return BAR_COLORS.swapped;
+                      if (isSorted)  return BAR_COLORS.sorted;
+                      return BAR_COLORS.default;
+                  };
 
                   if (isEliminated) return null;
 
@@ -33,14 +46,7 @@ export function BarChart({
                           animate={{
                               // Using transform (scaleY) since animating height directly can cause layout thrashing and artifacts
                               height: `${(value / maxVal) * 100}%`,
-                              // TODO: Clean this up
-                              backgroundColor: isActive
-                                  ? "#fbbf24" // Amber
-                                  : isSwapped
-                                      ? "#ef4444" // Red
-                                      : isSorted
-                                          ? "#10b981" // Green
-                                          : "#4f46e5"  // Indigo
+                              backgroundColor: getBarColor()
                           }}
                           transition={{
                               type: "tween",
