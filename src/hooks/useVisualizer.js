@@ -34,8 +34,9 @@ export function useVisualizer(algorithmGenerator, initialSize = 30) {
     // Reset visualizer when algorithm or size changes
     // We use useEffect here since genrating random numbers is da side effect
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         generateArray(size);
-    }, [size, algorithmGenerator]);
+    }, [size, algorithmGenerator, generateArray]);
 
     const step = useCallback(() => {
         if (!generatorRef.current && algorithmGenerator) {
